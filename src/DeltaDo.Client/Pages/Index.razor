@@ -1,4 +1,5 @@
 @page "/"
+@using DeltaDo.Shared
 @inject DeltaDo.Client.Services.LocalTodoService Todos
 
 <h3>DeltaDo</h3>
@@ -21,7 +22,7 @@ else
 }
 
 @code {
-    private List<DeltaDo.Shared.TodoItem>? items;
+    private IEnumerable<TodoItem>? items;   // ✅ IEnumerable
     protected override async Task OnInitializedAsync()
-        => items = await Todos.GetAsync();
+        => items = await Todos.GetAllAsync();
 }

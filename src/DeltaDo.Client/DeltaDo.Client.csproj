@@ -15,4 +15,8 @@
     <ProjectReference Include="..\DeltaDo.Shared\DeltaDo.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="data\" />
+  </ItemGroup>
+
 </Project>
