@@ -1,0 +1,27 @@
+@page "/"
+@inject DeltaDo.Client.Services.LocalTodoService Todos
+
+<h3>DeltaDo</h3>
+
+@if (items is null)
+{
+    <p>Loading…</p>
+}
+else
+{
+    <ul>
+        @foreach (var t in items)
+        {
+            <li>
+                <input type="checkbox" checked="@t.IsDone" disabled />
+                @t.Title
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private List<DeltaDo.Shared.TodoItem>? items;
+    protected override async Task OnInitializedAsync()
+        => items = await Todos.GetAsync();
+}
